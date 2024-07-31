@@ -1,4 +1,4 @@
-package model
+package noteModel
 
 import (
 	"github.com/google/uuid"

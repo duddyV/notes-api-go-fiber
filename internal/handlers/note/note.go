@@ -2,14 +2,14 @@ package noteHandler
 
 import (
 	"github.com/duddyV/notes-api-go-fiber/database"
-	"github.com/duddyV/notes-api-go-fiber/internal/model"
+	noteModel "github.com/duddyV/notes-api-go-fiber/internal/model/note"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 )
 
 func GetNotes(c *fiber.Ctx) error {
 	db := database.DB
-	var notes []model.Note
+	var notes []noteModel.Note
 
 	// Find all notes in the database
 	db.Find(&notes)
@@ -25,7 +25,7 @@ func GetNotes(c *fiber.Ctx) error {
 
 func CreateNotes(c *fiber.Ctx) error {
 	db := database.DB
-	note := new(model.Note)
+	note := new(noteModel.Note)
 
 	// Store th ebody in the note and return error if encountered
 	err := c.BodyParser(note)
@@ -47,7 +47,7 @@ func CreateNotes(c *fiber.Ctx) error {
 
 func GetNote(c *fiber.Ctx) error {
 	db := database.DB
-	var note model.Note
+	var note noteModel.Note
 
 	// Read the param note Id
 	id := c.Params("noteId")
@@ -71,7 +71,7 @@ func UpdateNote(c *fiber.Ctx) error {
 		Text string `json:"Text"`
 	}
 	db := database.DB
-	var note model.Note
+	var note noteModel.Note
 
 	// Read the param noteId
 	id := c.Params("noteId")
@@ -105,7 +105,7 @@ func UpdateNote(c *fiber.Ctx) error {
 
 func DeleteNote(c *fiber.Ctx) error {
 	db := database.DB
-	var note model.Note
+	var note noteModel.Note
 
 	// Read the param noteId
 	id := c.Params("noteId")
