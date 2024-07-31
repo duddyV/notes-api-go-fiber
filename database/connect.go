@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"github.com/duddyV/notes-api-go-fiber/config"
+	"github.com/duddyV/notes-api-go-fiber/internal/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -34,5 +35,7 @@ func ConnectDB() {
 
 	fmt.Println("Connection Opened to Database")
 
+	DB.AutoMigrate(&model.Note{})
+	fmt.Println("Database migrated")
 }
 
