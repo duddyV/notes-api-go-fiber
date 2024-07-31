@@ -11,4 +11,9 @@ func SetupRoutes(app *fiber.App) {
 
 	// Setup the Node Routes
 	noteRoutes.SetupNoteRoutes(api)
+
+	// Define a root route
+    app.Get("/", func(c *fiber.Ctx) error {
+        return c.SendString("Welcome to the Notes API")
+    })
 }
