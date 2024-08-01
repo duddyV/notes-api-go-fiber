@@ -4,6 +4,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	noteRoutes "github.com/duddyV/notes-api-go-fiber/internal/routes/note"
+	userRoutes "github.com/duddyV/notes-api-go-fiber/internal/routes/user"
 )
 
 func SetupRoutes(app *fiber.App) {
@@ -11,6 +12,9 @@ func SetupRoutes(app *fiber.App) {
 
 	// Setup the Node Routes
 	noteRoutes.SetupNoteRoutes(api)
+
+	// Setup the User Routes
+	userRoutes.SetupUserRoutes(api)
 
 	// Define a root route
     app.Get("/", func(c *fiber.Ctx) error {

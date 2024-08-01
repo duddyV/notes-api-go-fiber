@@ -2,7 +2,7 @@ package noteHandler
 
 import (
 	"github.com/duddyV/notes-api-go-fiber/database"
-	noteModel "github.com/duddyV/notes-api-go-fiber/internal/model/note"
+	noteModel "github.com/duddyV/notes-api-go-fiber/internal/models/note"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 )
@@ -27,7 +27,7 @@ func CreateNotes(c *fiber.Ctx) error {
 	db := database.DB
 	note := new(noteModel.Note)
 
-	// Store th ebody in the note and return error if encountered
+	// Store the body in the note and return error if encountered
 	err := c.BodyParser(note)
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "Review your input", "data": err})

@@ -6,7 +6,8 @@ import (
 	"strconv"
 
 	"github.com/duddyV/notes-api-go-fiber/config"
-	noteModel "github.com/duddyV/notes-api-go-fiber/internal/model/note"
+	noteModel "github.com/duddyV/notes-api-go-fiber/internal/models/note"
+	userModel "github.com/duddyV/notes-api-go-fiber/internal/models/user"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -36,6 +37,7 @@ func ConnectDB() {
 	fmt.Println("Connection Opened to Database")
 
 	DB.AutoMigrate(&noteModel.Note{})
+	DB.AutoMigrate(&userModel.User{})
 	fmt.Println("Database migrated")
 }
 
